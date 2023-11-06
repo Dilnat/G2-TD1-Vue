@@ -14,6 +14,9 @@ function ajouterTache(){
 function retirerTache(tache){
   taches.value = taches.value.filter(t => t.id !== tache.id);
 }
+
+const cacheFaits = ref(false);
+
 </script>
 
 <template>
@@ -21,9 +24,12 @@ function retirerTache(tache){
     <ul>
       <input type="texte" v-model.trim="nouvelleTache" placeholder="Ajouter une tâche">
       <button @click="ajouterTache">Valider</button>
+      <button @click="cacheFaits = !cacheFaits">
+        {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
+      </button>
       <li v-for="tache in taches" :key="tache.id">
         <input type="checkbox" v-model="tache.faite">
-        <span>{{tache.description}}</span>
+        <span :class="{fait:tache.faite}">{{tache.description}}</span>
         <button @click="retirerTache(tache)">Retirer</button>
       </li>
     </ul>
@@ -42,5 +48,8 @@ ul,span{
 li{
   list-style: none;
   padding: 2px 0px;
+}
+.fait{
+  text-decoration: line-through;
 }
 </style>
