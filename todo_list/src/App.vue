@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {ref, computed} from 'vue';
+import type { Ref } from 'vue';
 let id = 0;
-const taches = ref([{id:id++, description:"Apprendre Vue", faite:false},
+const taches:Ref<Tache[]> = ref([{id:id++, description:"Apprendre Vue", faite:false},
   {id:id++, description:"Finir la SAÉ", faite:false},
   {id:id++, description:"Réviser pour l'interro", faite:false}]);
 let nouvelleTache = ref("");
