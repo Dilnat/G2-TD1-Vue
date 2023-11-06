@@ -22,6 +22,7 @@ function retirerTache(tache){
       <input type="texte" v-model.trim="nouvelleTache" placeholder="Ajouter une tâche">
       <button @click="ajouterTache">Valider</button>
       <li v-for="tache in taches" :key="tache.id">
+        <input type="checkbox" v-model="tache.faite">
         <span>{{tache.description}}</span>
         <button @click="retirerTache(tache)">Retirer</button>
       </li>
