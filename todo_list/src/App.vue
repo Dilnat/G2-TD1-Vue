@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import {ref} from 'vue';
 let texte =  "un texte qui s'affiche";
-let compteur = 7;
+let compteur = ref(7);
 function incremente(){
-  compteur++;
-  console.log(compteur);
+  compteur.value++;
+  console.log(compteur.value);
 }
 </script>
 
@@ -14,6 +15,7 @@ function incremente(){
     <p>{{texte}}</p>
     <a v-bind:href="texte">Test</a>
     <button v-on:click="incremente">+</button>
+    {{compteur}}
   </div>
 </template>
 
