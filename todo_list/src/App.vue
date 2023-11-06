@@ -6,9 +6,9 @@ function incremente(){
   compteur.value++;
   console.log(compteur.value);
 }
-function onInput(e) {
-  compteur.value = e.target.value
-}
+// function onInput(e) {
+//   compteur.value = e.target.value
+// }
 </script>
 
 
@@ -18,7 +18,8 @@ function onInput(e) {
     <p>{{texte}}</p>
     <a v-bind:href="texte">Test</a>
     <button v-on:click="incremente">+</button>
-    <input v-bind:value="compteur" v-on:input="compteur">
+<!--    <input v-bind:value="compteur" v-on:input="compteur">-->
+    <input v-model="compteur">
   </div>
 </template>
 
