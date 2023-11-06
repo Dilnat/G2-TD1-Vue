@@ -16,7 +16,9 @@ function retirerTache(tache){
 }
 
 const cacheFaits = ref(false);
-
+function tachesFiltrees(){
+  return taches.value.filter(t => cacheFaits.value == false && t.faite == false);
+}
 </script>
 
 <template>
@@ -27,7 +29,7 @@ const cacheFaits = ref(false);
       <button @click="cacheFaits = !cacheFaits">
         {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
       </button>
-      <li v-for="tache in taches" :key="tache.id">
+      <li v-for="tache in tachesFiltrees()" :key="tache.id">
         <input type="checkbox" v-model="tache.faite">
         <span :class="{fait:tache.faite}">{{tache.description}}</span>
         <button @click="retirerTache(tache)">Retirer</button>
