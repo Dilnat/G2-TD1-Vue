@@ -16,7 +16,7 @@ function ajouterTache(){
 <template>
   <div id="wrapper">
     <ul>
-      <input type="texte" v-model="nouvelleTache" placeholder="Ajouter une tâche">
+      <input type="texte" v-model.trim="nouvelleTache" placeholder="Ajouter une tâche">
       <button @click="ajouterTache">Valider</button>
       <li v-for="tache in taches" :key="tache.id">
         <span>{{tache.description}}</span>
