@@ -11,10 +11,14 @@ function ajouterTache(){
     nouvelleTache.value = "";
   }
 }
-function retirerTache(tache){
+function retirerTache(tache:Tache){
   taches.value = taches.value.filter(t => t.id !== tache.id);
 }
-
+interface Tache {
+  id: number;
+  description:string;
+  faite:boolean;
+}
 const cacheFaits = ref(false);
 const tachesFiltrees = computed(() => {return taches.value.filter(t => cacheFaits.value == false && t.faite == false);});
 </script>
