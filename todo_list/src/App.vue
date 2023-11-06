@@ -11,6 +11,9 @@ function ajouterTache(){
     nouvelleTache.value = "";
   }
 }
+function retirerTache(tache){
+  taches.value = taches.value.filter(t => t.id !== tache.id);
+}
 </script>
 
 <template>
@@ -20,10 +23,23 @@ function ajouterTache(){
       <button @click="ajouterTache">Valider</button>
       <li v-for="tache in taches" :key="tache.id">
         <span>{{tache.description}}</span>
+        <button @click="retirerTache(tache)">Retirer</button>
       </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
+#wrapper{
+  border-radius: 5px;
+  border:solid black 2px;
+  padding: 10px;
+}
+ul,span{
+  padding:10px;
+}
+li{
+  list-style: none;
+  padding: 2px 0px;
+}
 </style>
