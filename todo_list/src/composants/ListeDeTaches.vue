@@ -22,11 +22,16 @@ interface Tache {
 }
 const cacheFaits = ref(false);
 const tachesFiltrees = computed(() => {return taches.value.filter(t => cacheFaits.value == false && t.faite == false);});
+
+const props = defineProps<{titre: string}>();
+
+
 </script>
 
 <template>
   <div id="wrapper">
     <ul>
+      <h2>{{titre}}</h2>
       <input type="texte" v-model.trim="nouvelleTache" placeholder="Ajouter une tâche">
       <button @click="ajouterTache">Valider</button>
       <button @click="cacheFaits = !cacheFaits">
