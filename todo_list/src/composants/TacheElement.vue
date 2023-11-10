@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {ref} from 'vue';
 const props = defineProps<{descriptionTache: string, cochee:boolean}>();
+const emit = defineEmits<{supprimerTache:[]}>();
+
+
+
 </script>
 
 <template>
