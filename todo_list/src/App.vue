@@ -7,7 +7,7 @@ interface TacheList {
   ids: number;
   titres:string;
 }
-const todoListes:Ref<TacheList[]> = ref([{ids:id, titres:"Tâches de Mattéo"},
+const todoListes:Ref<TacheList[]> = ref([{ids:id++, titres:"Tâches de Mattéo"},
   {ids:id++, titres: "Tâches de Tony"}]);
 let nouvelleTacheList = ref("");
 function ajouterTacheList(){
@@ -15,6 +15,12 @@ function ajouterTacheList(){
     todoListes.value.push({ids:id++, titres:nouvelleTacheList.value});
     nouvelleTacheList.value = "";
   }
+}
+
+function retirerListe(tacheList:TacheList){
+  console.log(todoListes.value);
+  console.log(tacheList);
+  todoListes.value = todoListes.value.filter(t => t.ids !== tacheList.ids);
 }
 </script>
 
@@ -26,15 +32,10 @@ function ajouterTacheList(){
     <li v-for="tacheList in todoListes" :key="tacheList.ids">
 <!--      <input type="checkbox">-->
       <span>{{tacheList.titres}}</span>
-      <button >Retirer</button>
     </li>
   </ul>
 
-
-
-  <ListeDeTaches titre="tâches de Mattéo"/>
-  <ListeDeTaches titre="tâches de Tony"/>
-  <ListeDeTaches titre="tâches de Boris"/>
+  <ListeDeTaches  v-for="liste in todoListes" :key="liste.ids"  :titre="liste.titres" @supprimerListe="retirerListe(liste)" />
 </template>
 
 <style scoped>

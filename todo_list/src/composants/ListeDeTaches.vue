@@ -31,7 +31,8 @@ const props = defineProps<{titre: string}>();
 <template>
   <div id="wrapper">
     <ul>
-      <h2>{{titre}}</h2>
+      <h2>{{titre}}<button @click="$emit('supprimerListe')">Retirer</button></h2>
+
       <input type="texte" v-model.trim="nouvelleTache" placeholder="Ajouter une tâche">
       <button @click="ajouterTache">Valider</button>
       <button @click="cacheFaits = !cacheFaits">
