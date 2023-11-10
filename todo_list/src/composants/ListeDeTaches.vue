@@ -40,7 +40,7 @@ const props = defineProps<{titre: string}>();
         {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
       </button>
       <li v-for="tache in tachesFiltrees" :key="tache.id">
-        <TacheElement :description-tache="tache.description" :cochee="tache.faite" />
+        <TacheElement :description-tache="tache.description" :cochee="tache.faite" @supprimerTache="retirerTache(tache)"/>
       </li>
     </ul>
   </div>
