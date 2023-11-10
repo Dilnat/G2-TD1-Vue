@@ -22,7 +22,7 @@ interface Tache {
   faite:boolean;
 }
 const cacheFaits = ref(false);
-const tachesFiltrees = computed(() => {return taches.value.filter(t => cacheFaits.value == false && t.faite == false);});
+const tachesFiltrees = computed(() => {return cacheFaits.value ? taches.value.filter((tachesRestantes) => !tachesRestantes.faite) : taches.value});
 
 const props = defineProps<{titre: string}>();
 const emit = defineEmits<{supprimerListe:[]}>();
@@ -41,7 +41,7 @@ const emit = defineEmits<{supprimerListe:[]}>();
         {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
       </button>
       <li v-for="tache in tachesFiltrees" :key="tache.id">
-        <TacheElement :description-tache="tache.description" :cochee="tache.faite" @supprimerTache="retirerTache(tache)"/>
+        <TacheElement :description-tache="tache.description" :cochee="tache.faite" @supprimerTache="retirerTache(tache)" @checkedChange="(v:boolean) => tache.faite=v"/>
       </li>
     </ul>
   </div>
