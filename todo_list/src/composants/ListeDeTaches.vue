@@ -25,6 +25,7 @@ const cacheFaits = ref(false);
 const tachesFiltrees = computed(() => {return taches.value.filter(t => cacheFaits.value == false && t.faite == false);});
 
 const props = defineProps<{titre: string}>();
+const emit = defineEmits<{supprimerListe:[]}>();
 
 
 </script>
