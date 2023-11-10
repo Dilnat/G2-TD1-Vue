@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref, computed} from 'vue';
 import type { Ref } from 'vue';
+import TacheElement from '@/composants/TacheElement.vue';
 let id = 0;
 const taches:Ref<Tache[]> = ref([{id:id++, description:"Apprendre Vue", faite:false},
   {id:id++, description:"Finir la SAÉ", faite:false},
@@ -39,9 +40,7 @@ const props = defineProps<{titre: string}>();
         {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
       </button>
       <li v-for="tache in tachesFiltrees" :key="tache.id">
-        <input type="checkbox" v-model="tache.faite">
-        <span :class="{fait:tache.faite}">{{tache.description}}</span>
-        <button @click="retirerTache(tache)">Retirer</button>
+        <TacheElement :description-tache="tache.description" :cochee="tache.faite" />
       </li>
     </ul>
   </div>
