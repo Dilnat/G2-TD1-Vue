@@ -44,7 +44,8 @@ const emit = defineEmits<{supprimerListe:[]}>();
         <TacheElement :description-tache="tache.description"
                       v-model="tache.faite"
                       @supprimer-tache="retirerTache(tache)"
-        />
+        >{{tache.description}}
+        </TacheElement>
       </li>
     </ul>
   </div>
