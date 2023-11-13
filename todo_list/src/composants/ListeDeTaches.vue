@@ -41,7 +41,10 @@ const emit = defineEmits<{supprimerListe:[]}>();
         {{ cacheFaits ? 'Tout montrer' : 'Cacher les tâches terminées' }}
       </button>
       <li v-for="tache in tachesFiltrees" :key="tache.id">
-        <TacheElement :description-tache="tache.description" :cochee="tache.faite" @supprimerTache="retirerTache(tache)" @checkedChange="(v:boolean) => tache.faite=v"/>
+        <TacheElement :description-tache="tache.description"
+                      v-model="tache.faite"
+                      @supprimer-tache="retirerTache(tache)"
+        />
       </li>
     </ul>
   </div>
