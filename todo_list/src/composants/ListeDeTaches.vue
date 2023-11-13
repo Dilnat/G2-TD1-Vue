@@ -24,8 +24,8 @@ interface Tache {
 const cacheFaits = ref(false);
 const tachesFiltrees = computed(() => {return cacheFaits.value ? taches.value.filter((tachesRestantes) => !tachesRestantes.faite) : taches.value});
 
-const props = defineProps<{titre: string}>();
-const emit = defineEmits<{supprimerListe:[]}>();
+defineProps<{titre: string}>();
+defineEmits<{supprimerListe:[]}>();
 
 
 </script>

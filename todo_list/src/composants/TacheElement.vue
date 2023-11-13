@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import {ref} from 'vue';
 const props = defineProps<{modelValue:boolean}>();
-const emit = defineEmits<{supprimerTache:[],
+defineEmits<{supprimerTache:[],
   "update:modelValue": [nouvelleValeur: boolean]}>();
 
 
